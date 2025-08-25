@@ -37,6 +37,7 @@ const Avatars = [
 const AnimatedAvatarStack = () => {
   const [avatarSize, setAvatarSize] = useState(64);
   const [itemsLength, setItemsLength] = useState(4);
+  const [hoveringItem, setHoveringItem] = useState<number | null>(null);
   const AVATAR_GAP = avatarSize / 1.75;
   const TOTAL_WIDTH = AVATAR_GAP * itemsLength + avatarSize;
 
@@ -56,11 +57,14 @@ const AnimatedAvatarStack = () => {
                 }}
                 key={avatar.name + index}
                 className="group relative"
+                onMouseEnter={() => setHoveringItem(index)}
+                onMouseLeave={() => setHoveringItem(null)}
               >
                 <div
-                  className={`z-10 absolute inset-0 opacity-0 group-hover:translate-y-[-${
-                    avatarSize / 2
-                  }px] group-hover:opacity-100 transition-all duration-300`}
+                  className={`z-10 absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300`}
+                  style={{
+                    transform: hoveringItem === index ? `translateY(-${avatarSize / 2}px)` : 'none'
+                  }}
                 >
                   <svg width={avatarSize + 20} height={avatarSize + 20} viewBox="0 0 105 105">
                     <defs>
@@ -90,9 +94,11 @@ const AnimatedAvatarStack = () => {
                   className="h-full w-full"
                 >
                   <div
-                    className={`rounded-full group-hover:translate-y-[-${
-                      avatarSize / 2
-                    }px] transition-all duration-300 h-full w-full m-4 overflow-hidden border-4 border-black`}
+                    className={`rounded-full transition-all duration-300 h-full w-full m-4 overflow-hidden border-4 border-black`}
+                    style={{
+                      transform:
+                        hoveringItem === index ? `translateY(-${avatarSize / 2}px)` : 'none'
+                    }}
                   >
                     <Image
                       src={avatar.image}
