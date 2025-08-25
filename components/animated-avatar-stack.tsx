@@ -38,7 +38,7 @@ const AnimatedAvatarStack = () => {
   const [avatarSize, setAvatarSize] = useState(64);
   const [itemsLength, setItemsLength] = useState(4);
   const AVATAR_GAP = avatarSize / 1.75;
-  const TOTAL_WIDTH = AVATAR_GAP * Avatars.length + avatarSize;
+  const TOTAL_WIDTH = AVATAR_GAP * itemsLength + avatarSize;
 
   return (
     <div className="flex flex-col items-center justify-center">
