@@ -19,6 +19,17 @@ export default function Home() {
       >
         Peerlist&apos;s Interaction Design Challenge
       </h1>
+      <p className="text-black text-sm sm:text-base md:text-lg lg:text-xl mt-4 text-center">
+        Submissions by{' '}
+        <a
+          href="https://samitkapoor.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-black font-bold hover:text-black/80 underline"
+        >
+          Samit Kapoor
+        </a>
+      </p>
       <div className="flex flex-col items-center justify-center mt-20 gap-20">
         <ComponentWrapper className="min-h-[500px]">
           <AnimatedAvatarStack />
