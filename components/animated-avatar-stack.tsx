@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Slider } from './ui/slider';
 import { MoreHorizontal } from 'lucide-react';
+import ConfigControls from './ui/config-controls';
 
 const Avatars = [
   {
@@ -122,33 +122,15 @@ const AnimatedAvatarStack = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center mt-[80px]">
-        <p>Items</p>
-        <div className="flex items-center justify-center gap-2">
-          {4}
-          <Slider
-            defaultValue={[4]}
-            min={3}
-            max={Avatars.length}
-            onValueChange={(value) => setItemsLength(value[0])}
-            className="w-[200px]"
-          />
-          {Avatars.length}
-        </div>
-      </div>
-      <div className="flex flex-col items-center justify-center">
-        <p>Size</p>
-        <div className="flex items-center justify-center gap-2">
-          {55}
-          <Slider
-            defaultValue={[64]}
-            min={55}
-            max={80}
-            onValueChange={(value) => setAvatarSize(value[0])}
-            className="w-[200px]"
-          />
-          {80}
-        </div>
+      {/* Config Controls */}
+      <div className="mt-[80px]">
+        <ConfigControls
+          items={itemsLength}
+          setItems={setItemsLength}
+          size={avatarSize}
+          setSize={setAvatarSize}
+          maxItems={Avatars.length}
+        />
       </div>
     </div>
   );
