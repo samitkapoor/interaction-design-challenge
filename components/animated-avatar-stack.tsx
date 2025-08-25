@@ -36,6 +36,7 @@ const AnimatedAvatarStack = () => {
   const AVATAR_SIZE = 64;
   const AVATAR_GAP = AVATAR_SIZE / 1.75;
   const TOTAL_WIDTH = AVATAR_GAP * Avatars.length;
+
   return (
     <div className="relative flex justify-center">
       {Avatars.map((avatar, index) => {
@@ -49,12 +50,33 @@ const AnimatedAvatarStack = () => {
               zIndex: Avatars.length - index
             }}
             key={avatar.name + index}
-            className="group"
+            className="group relative"
           >
+            <div
+              className={`z-10 absolute inset-0 opacity-0 group-hover:translate-y-[-${
+                AVATAR_SIZE / 2
+              }px] group-hover:opacity-100 transition-all duration-300`}
+            >
+              <svg width={AVATAR_SIZE + 20} height={AVATAR_SIZE + 20} viewBox="0 0 105 105">
+                <defs>
+                  <path
+                    id={`textPath-${index}`}
+                    d="M 60,60 m -48,0 a 48,48 0 1,1 96,0 a 48,48 0 1,1 -96,0"
+                    fill="none"
+                  />
+                </defs>
+
+                <text className="text-base font-medium fill-gray-600">
+                  <textPath href={`#textPath-${index}`} startOffset="5%">
+                    {avatar.name}
+                  </textPath>
+                </text>
+              </svg>
+            </div>
             <div
               className={`rounded-full group-hover:translate-y-[-${
                 AVATAR_SIZE / 2
-              }px] transition-all duration-300 h-full w-full overflow-hidden border-4 border-black`}
+              }px] transition-all duration-300 h-full w-full m-4 overflow-hidden border-4 border-black`}
             >
               <Image
                 src={avatar.image}
