@@ -13,9 +13,9 @@ interface ConfigSliderProps {
 
 const ConfigSlider: React.FC<ConfigSliderProps> = ({ label, min, max, value, onValueChange }) => {
   return (
-    <div className="flex gap-4 items-center justify-start w-full">
-      <p>{label}:</p>
-      <div className="flex items-center justify-center gap-2">
+    <div className="grid grid-cols-5 gap-4 items-center justify-start w-full">
+      <p className="col-span-1">{label}:</p>
+      <div className="flex items-center justify-center gap-2 col-span-4">
         {min}
         <Slider
           value={[value]}
@@ -39,6 +39,10 @@ interface ConfigControlsProps {
   maxItems?: number;
   minSize?: number;
   maxSize?: number;
+  borderWidth: number;
+  setBorderWidth: (value: number) => void;
+  minBorderWidth?: number;
+  maxBorderWidth?: number;
 }
 
 const ConfigControls: React.FC<ConfigControlsProps> = ({
@@ -49,7 +53,11 @@ const ConfigControls: React.FC<ConfigControlsProps> = ({
   minItems = 3,
   maxItems = 6,
   minSize = 55,
-  maxSize = 80
+  maxSize = 80,
+  borderWidth,
+  setBorderWidth,
+  minBorderWidth = 0,
+  maxBorderWidth = 10
 }) => {
   return (
     <div className="flex flex-col items-center justify-center gap-2">
@@ -61,6 +69,13 @@ const ConfigControls: React.FC<ConfigControlsProps> = ({
         onValueChange={setItems}
       />
       <ConfigSlider label="Size" min={minSize} max={maxSize} value={size} onValueChange={setSize} />
+      <ConfigSlider
+        label="Border"
+        min={minBorderWidth}
+        max={maxBorderWidth}
+        value={borderWidth}
+        onValueChange={setBorderWidth}
+      />
     </div>
   );
 };

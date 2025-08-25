@@ -31,12 +31,21 @@ const Avatars = [
   {
     image: 'https://i.pinimg.com/474x/52/89/a7/5289a705d3199d01da547c58c217a21d.jpg',
     name: 'Road Runner'
+  },
+  {
+    image: 'https://i.pinimg.com/736x/72/6b/18/726b189b2b8c64cfea3d78d7e4468ced.jpg',
+    name: 'Sylvester'
+  },
+  {
+    image: 'https://i.pinimg.com/474x/aa/26/4c/aa264c196cdf7a3bf8ab4d157e506472.jpg',
+    name: 'Elmer Fudd'
   }
 ];
 
 const AnimatedAvatarStack = () => {
   const [avatarSize, setAvatarSize] = useState(64);
-  const [itemsLength, setItemsLength] = useState(4);
+  const [itemsLength, setItemsLength] = useState(6);
+  const [borderWidth, setBorderWidth] = useState(4);
   const [hoveringItem, setHoveringItem] = useState<number | null>(null);
   const AVATAR_GAP = avatarSize / 1.75;
   const TOTAL_WIDTH = AVATAR_GAP * itemsLength + avatarSize;
@@ -44,75 +53,72 @@ const AnimatedAvatarStack = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="relative flex items-center justify-center">
-        <AnimatePresence>
-          {Avatars.filter((_, index) => index < itemsLength).map((avatar, index) => {
-            return (
+        {Avatars.filter((_, index) => index < itemsLength).map((avatar, index) => {
+          return (
+            <div
+              style={{
+                position: 'absolute',
+                left: index * AVATAR_GAP - TOTAL_WIDTH / 2,
+                height: avatarSize,
+                width: avatarSize,
+                zIndex: itemsLength - index
+              }}
+              key={avatar.name + index}
+              className="group relative"
+              onMouseEnter={() => setHoveringItem(index)}
+              onMouseLeave={() => setHoveringItem(null)}
+            >
               <div
+                className={`z-10 absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300`}
                 style={{
-                  position: 'absolute',
-                  left: index * AVATAR_GAP - TOTAL_WIDTH / 2,
-                  height: avatarSize,
-                  width: avatarSize,
-                  zIndex: itemsLength - index
+                  transform: hoveringItem === index ? `translateY(-${avatarSize / 2}px)` : 'none'
                 }}
-                key={avatar.name + index}
-                className="group relative"
-                onMouseEnter={() => setHoveringItem(index)}
-                onMouseLeave={() => setHoveringItem(null)}
+              >
+                <svg width={avatarSize + 20} height={avatarSize + 20} viewBox="0 0 105 105">
+                  <defs>
+                    <path
+                      id={`textPath-${index}`}
+                      d="M 60,60 m -48,0 a 48,48 0 1,1 96,0 a 48,48 0 1,1 -96,0"
+                      fill="none"
+                    />
+                  </defs>
+
+                  <text className="text-base font-medium">
+                    <textPath href={`#textPath-${index}`} startOffset="4%">
+                      {avatar.name}
+                    </textPath>
+                  </text>
+                </svg>
+              </div>
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 700,
+                  damping: 30
+                }}
+                className="h-full w-full"
               >
                 <div
-                  className={`z-10 absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300`}
+                  className={`rounded-full transition-all duration-300 h-full w-full m-4 overflow-hidden border-black`}
                   style={{
+                    borderWidth: borderWidth,
                     transform: hoveringItem === index ? `translateY(-${avatarSize / 2}px)` : 'none'
                   }}
                 >
-                  <svg width={avatarSize + 20} height={avatarSize + 20} viewBox="0 0 105 105">
-                    <defs>
-                      <path
-                        id={`textPath-${index}`}
-                        d="M 60,60 m -48,0 a 48,48 0 1,1 96,0 a 48,48 0 1,1 -96,0"
-                        fill="none"
-                      />
-                    </defs>
-
-                    <text className="text-base font-medium">
-                      <textPath href={`#textPath-${index}`} startOffset="4%">
-                        {avatar.name}
-                      </textPath>
-                    </text>
-                  </svg>
+                  <Image
+                    src={avatar.image}
+                    alt={avatar.name}
+                    width={100}
+                    height={100}
+                    className={`rounded-full h-full w-full object-cover ${avatar.imageClassName}`}
+                  />
                 </div>
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  exit={{ scale: 0, transition: { duration: 0.1 } }}
-                  transition={{
-                    type: 'spring',
-                    stiffness: 700,
-                    damping: 30
-                  }}
-                  className="h-full w-full"
-                >
-                  <div
-                    className={`rounded-full transition-all duration-300 h-full w-full m-4 overflow-hidden border-4 border-black`}
-                    style={{
-                      transform:
-                        hoveringItem === index ? `translateY(-${avatarSize / 2}px)` : 'none'
-                    }}
-                  >
-                    <Image
-                      src={avatar.image}
-                      alt={avatar.name}
-                      width={100}
-                      height={100}
-                      className={`rounded-full h-full w-full object-cover ${avatar.imageClassName}`}
-                    />
-                  </div>
-                </motion.div>
-              </div>
-            );
-          })}
-        </AnimatePresence>
+              </motion.div>
+            </div>
+          );
+        })}
 
         <div
           style={{
@@ -136,6 +142,8 @@ const AnimatedAvatarStack = () => {
           size={avatarSize}
           setSize={setAvatarSize}
           maxItems={Avatars.length}
+          borderWidth={borderWidth}
+          setBorderWidth={setBorderWidth}
         />
       </div>
     </div>
