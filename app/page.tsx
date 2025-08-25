@@ -27,7 +27,7 @@ export default function Home() {
         </a>
       </p>
       <div className="flex flex-col items-center justify-center mt-20 gap-20">
-        <ComponentWrapper className="min-h-[500px]">
+        <ComponentWrapper title="Day 1 - Animated Avatar Stack" className="min-h-[500px]">
           <AnimatedAvatarStack />
         </ComponentWrapper>
       </div>
