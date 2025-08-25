@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { MoreHorizontal } from 'lucide-react';
 import ConfigControls from './ui/config-controls';
 
@@ -47,7 +47,7 @@ const AnimatedAvatarStack = () => {
   const [itemsLength, setItemsLength] = useState(5);
   const [borderWidth, setBorderWidth] = useState(4);
   const [hoveringItem, setHoveringItem] = useState<number | null>(null);
-  const [avatarGap, setAvatarGap] = useState(avatarSize / 1.75);
+  const [avatarGap, setAvatarGap] = useState(avatarSize / 1.6);
   const TOTAL_WIDTH = avatarGap * itemsLength + avatarSize;
 
   return (
