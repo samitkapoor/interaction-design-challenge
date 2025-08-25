@@ -5,6 +5,12 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MoreHorizontal } from 'lucide-react';
 import ConfigControls from './ui/config-controls';
+import { Geist } from 'next/font/google';
+
+const geist = Geist({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700']
+});
 
 const Avatars = [
   {
@@ -51,7 +57,7 @@ const AnimatedAvatarStack = () => {
   const TOTAL_WIDTH = avatarGap * itemsLength + avatarSize;
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className={`flex flex-col items-center justify-center ${geist.className}`}>
       <div className="relative flex items-center justify-center">
         {Avatars.filter((_, index) => index < itemsLength).map((avatar, index) => {
           return (

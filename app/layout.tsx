@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { Geist } from 'next/font/google';
+import { Lora } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const lora = Lora({
+  variable: '--font-lora',
   subsets: ['latin']
 });
 
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.className} antialiased`}>{children}</body>
+      <body className={`${lora.className} antialiased`}>{children}</body>
       <Analytics />
     </html>
   );

@@ -1,22 +1,10 @@
 import AnimatedAvatarStack from '@/components/animated-avatar-stack';
 import ComponentWrapper from '@/components/ui/component-wrapper';
-import { cn } from '@/lib/utils';
-import { DM_Serif_Text } from 'next/font/google';
-
-const dmSerifText = DM_Serif_Text({
-  subsets: ['latin'],
-  weight: ['400']
-});
 
 export default function Home() {
   return (
     <div className="bg-background h-screen w-screen flex flex-col items-center">
-      <h1
-        className={cn(
-          'flex items-center gap-2 text-black font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl mt-20 text-center',
-          dmSerifText.className
-        )}
-      >
+      <h1 className="flex items-center gap-2 text-black font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl mt-20 text-center">
         Peerlist&apos;s Interaction Design Challenge
       </h1>
       <p className="text-black text-sm sm:text-base md:text-lg lg:text-xl mt-4 text-center">
