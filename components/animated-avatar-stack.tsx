@@ -1,8 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Slider } from './ui/slider';
+import { MoreHorizontal } from 'lucide-react';
 
 const Avatars = [
   {
@@ -33,62 +35,121 @@ const Avatars = [
 ];
 
 const AnimatedAvatarStack = () => {
-  const AVATAR_SIZE = 64;
-  const AVATAR_GAP = AVATAR_SIZE / 1.75;
-  const TOTAL_WIDTH = AVATAR_GAP * Avatars.length;
+  const [avatarSize, setAvatarSize] = useState(64);
+  const [itemsLength, setItemsLength] = useState(4);
+  const AVATAR_GAP = avatarSize / 1.75;
+  const TOTAL_WIDTH = AVATAR_GAP * Avatars.length + avatarSize;
 
   return (
-    <div className="relative flex justify-center">
-      {Avatars.map((avatar, index) => {
-        return (
-          <div
-            style={{
-              position: 'absolute',
-              left: index * AVATAR_GAP - TOTAL_WIDTH / 2,
-              height: AVATAR_SIZE,
-              width: AVATAR_SIZE,
-              zIndex: Avatars.length - index
-            }}
-            key={avatar.name + index}
-            className="group relative"
-          >
-            <div
-              className={`z-10 absolute inset-0 opacity-0 group-hover:translate-y-[-${
-                AVATAR_SIZE / 2
-              }px] group-hover:opacity-100 transition-all duration-300`}
-            >
-              <svg width={AVATAR_SIZE + 20} height={AVATAR_SIZE + 20} viewBox="0 0 105 105">
-                <defs>
-                  <path
-                    id={`textPath-${index}`}
-                    d="M 60,60 m -48,0 a 48,48 0 1,1 96,0 a 48,48 0 1,1 -96,0"
-                    fill="none"
-                  />
-                </defs>
+    <div className="flex flex-col items-center justify-center">
+      <div className="relative flex items-center justify-center">
+        <AnimatePresence>
+          {Avatars.filter((_, index) => index < itemsLength).map((avatar, index) => {
+            return (
+              <div
+                style={{
+                  position: 'absolute',
+                  left: index * AVATAR_GAP - TOTAL_WIDTH / 2,
+                  height: avatarSize,
+                  width: avatarSize,
+                  zIndex: itemsLength - index
+                }}
+                key={avatar.name + index}
+                className="group relative"
+              >
+                <div
+                  className={`z-10 absolute inset-0 opacity-0 group-hover:translate-y-[-${
+                    avatarSize / 2
+                  }px] group-hover:opacity-100 transition-all duration-300`}
+                >
+                  <svg width={avatarSize + 20} height={avatarSize + 20} viewBox="0 0 105 105">
+                    <defs>
+                      <path
+                        id={`textPath-${index}`}
+                        d="M 60,60 m -48,0 a 48,48 0 1,1 96,0 a 48,48 0 1,1 -96,0"
+                        fill="none"
+                      />
+                    </defs>
 
-                <text className="text-base font-medium">
-                  <textPath href={`#textPath-${index}`} startOffset="6%">
-                    {avatar.name}
-                  </textPath>
-                </text>
-              </svg>
-            </div>
-            <div
-              className={`rounded-full group-hover:translate-y-[-${
-                AVATAR_SIZE / 2
-              }px] transition-all duration-300 h-full w-full m-4 overflow-hidden border-4 border-black`}
-            >
-              <Image
-                src={avatar.image}
-                alt={avatar.name}
-                width={100}
-                height={100}
-                className={`rounded-full h-full w-full object-cover ${avatar.imageClassName}`}
-              />
-            </div>
+                    <text className="text-base font-medium">
+                      <textPath href={`#textPath-${index}`} startOffset="4%">
+                        {avatar.name}
+                      </textPath>
+                    </text>
+                  </svg>
+                </div>
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0, transition: { duration: 0.1 } }}
+                  transition={{
+                    type: 'spring',
+                    stiffness: 700,
+                    damping: 30
+                  }}
+                  className="h-full w-full"
+                >
+                  <div
+                    className={`rounded-full group-hover:translate-y-[-${
+                      avatarSize / 2
+                    }px] transition-all duration-300 h-full w-full m-4 overflow-hidden border-4 border-black`}
+                  >
+                    <Image
+                      src={avatar.image}
+                      alt={avatar.name}
+                      width={100}
+                      height={100}
+                      className={`rounded-full h-full w-full object-cover ${avatar.imageClassName}`}
+                    />
+                  </div>
+                </motion.div>
+              </div>
+            );
+          })}
+        </AnimatePresence>
+
+        <div
+          style={{
+            position: 'absolute',
+            left: itemsLength * AVATAR_GAP - TOTAL_WIDTH / 2 + avatarSize / 2,
+            height: avatarSize,
+            width: avatarSize
+          }}
+          className="group relative"
+        >
+          <div className={`h-full w-full m-4 flex items-center justify-start`}>
+            <MoreHorizontal />
           </div>
-        );
-      })}
+        </div>
+      </div>
+      <div className="flex flex-col items-center justify-center mt-[80px]">
+        <p>Items</p>
+        <div className="flex items-center justify-center gap-2">
+          {4}
+          <Slider
+            defaultValue={[4]}
+            min={3}
+            max={Avatars.length}
+            onValueChange={(value) => setItemsLength(value[0])}
+            className="w-[200px]"
+          />
+          {Avatars.length}
+        </div>
+      </div>
+      <div className="flex flex-col items-center justify-center">
+        <p>Size</p>
+        <div className="flex items-center justify-center gap-2">
+          {55}
+          <Slider
+            defaultValue={[64]}
+            min={55}
+            max={80}
+            onValueChange={(value) => setAvatarSize(value[0])}
+            className="w-[200px]"
+          />
+          {80}
+        </div>
+      </div>
     </div>
   );
 };

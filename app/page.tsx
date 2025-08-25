@@ -1,4 +1,5 @@
 import AnimatedAvatarStack from '@/components/animated-avatar-stack';
+import ComponentWrapper from '@/components/ui/component-wrapper';
 
 export default function Home() {
   return (
@@ -13,7 +14,9 @@ export default function Home() {
         Interaction Design Challenge
       </h1>
       <div className="flex flex-col items-center justify-center mt-20 gap-20">
-        <AnimatedAvatarStack />
+        <ComponentWrapper className="min-h-[500px]">
+          <AnimatedAvatarStack />
+        </ComponentWrapper>
       </div>
     </div>
   );
