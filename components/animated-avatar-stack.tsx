@@ -55,7 +55,8 @@ const AnimatedAvatarStack = () => {
       <div className="relative flex items-center justify-center">
         {Avatars.filter((_, index) => index < itemsLength).map((avatar, index) => {
           return (
-            <div
+            <motion.div
+              layout
               style={{
                 position: 'absolute',
                 left: index * avatarGap - TOTAL_WIDTH / 2,
@@ -69,7 +70,7 @@ const AnimatedAvatarStack = () => {
               onMouseLeave={() => setHoveringItem(null)}
             >
               <div
-                className={`z-10 absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300`}
+                className={`z-10 absolute inset-0 opacity-0 group-hover:opacity-100 transition-all ease-in-out duration-300`}
                 style={{
                   transform: hoveringItem === index ? `translateY(-${avatarSize / 2}px)` : 'none'
                 }}
@@ -101,7 +102,7 @@ const AnimatedAvatarStack = () => {
                 className="h-full w-full"
               >
                 <div
-                  className={`rounded-full transition-all duration-300 h-full w-full m-4 overflow-hidden border-black`}
+                  className={`rounded-full transition-all duration-300 ease-in-out h-full w-full m-4 overflow-hidden border-black`}
                   style={{
                     borderWidth: borderWidth,
                     transform: hoveringItem === index ? `translateY(-${avatarSize / 2}px)` : 'none'
@@ -116,7 +117,7 @@ const AnimatedAvatarStack = () => {
                   />
                 </div>
               </motion.div>
-            </div>
+            </motion.div>
           );
         })}
 
