@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Lora } from 'next/font/google';
+import { Geist } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 import Topbar from '@/components/ui/top-bar';
 
-const lora = Lora({
-  variable: '--font-lora',
+const geist = Geist({
+  variable: '--font-geist',
   subsets: ['latin']
 });
 
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${lora.className} antialiased relative`}>
+      <body className={`${geist.className} antialiased relative`}>
         <Topbar />
         {children}
       </body>
