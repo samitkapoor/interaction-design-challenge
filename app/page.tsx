@@ -1,3 +1,5 @@
+import AnimatedAvatarStack from '@/components/animated-avatar-stack';
+
 export default function Home() {
   return (
     <div className="bg-background h-screen w-screen flex flex-col items-center">
@@ -10,6 +12,9 @@ export default function Home() {
         </div>
         Interaction Design Challenge
       </h1>
+      <div className="flex flex-col items-center justify-center mt-20 gap-20">
+        <AnimatedAvatarStack />
+      </div>
     </div>
   );
 }
