@@ -66,8 +66,8 @@ const AnimatedAvatarStack = () => {
                   />
                 </defs>
 
-                <text className="text-base font-medium fill-gray-600">
-                  <textPath href={`#textPath-${index}`} startOffset="5%">
+                <text className="text-base font-medium">
+                  <textPath href={`#textPath-${index}`} startOffset="6%">
                     {avatar.name}
                   </textPath>
                 </text>
