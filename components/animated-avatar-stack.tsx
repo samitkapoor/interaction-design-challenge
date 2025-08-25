@@ -57,6 +57,11 @@ const AnimatedAvatarStack = () => {
           return (
             <motion.div
               layout
+              transition={{
+                type: 'spring',
+                stiffness: 700,
+                damping: 30
+              }}
               style={{
                 position: 'absolute',
                 left: index * avatarGap - TOTAL_WIDTH / 2,
