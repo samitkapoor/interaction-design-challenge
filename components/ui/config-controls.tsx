@@ -85,7 +85,7 @@ const ConfigControls: React.FC<ConfigControlsProps> = ({
         onValueChange={setBorderWidth}
       />
       <ConfigSlider
-        label="Avatar Gap"
+        label="Gap"
         min={minAvatarGap}
         max={maxAvatarGap}
         value={avatarGap}
