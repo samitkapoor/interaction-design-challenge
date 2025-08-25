@@ -44,11 +44,11 @@ const Avatars = [
 
 const AnimatedAvatarStack = () => {
   const [avatarSize, setAvatarSize] = useState(64);
-  const [itemsLength, setItemsLength] = useState(6);
+  const [itemsLength, setItemsLength] = useState(5);
   const [borderWidth, setBorderWidth] = useState(4);
   const [hoveringItem, setHoveringItem] = useState<number | null>(null);
-  const AVATAR_GAP = avatarSize / 1.75;
-  const TOTAL_WIDTH = AVATAR_GAP * itemsLength + avatarSize;
+  const [avatarGap, setAvatarGap] = useState(avatarSize / 1.75);
+  const TOTAL_WIDTH = avatarGap * itemsLength + avatarSize;
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -58,7 +58,7 @@ const AnimatedAvatarStack = () => {
             <div
               style={{
                 position: 'absolute',
-                left: index * AVATAR_GAP - TOTAL_WIDTH / 2,
+                left: index * avatarGap - TOTAL_WIDTH / 2,
                 height: avatarSize,
                 width: avatarSize,
                 zIndex: itemsLength - index
@@ -123,7 +123,7 @@ const AnimatedAvatarStack = () => {
         <div
           style={{
             position: 'absolute',
-            left: itemsLength * AVATAR_GAP - TOTAL_WIDTH / 2 + avatarSize / 2,
+            left: itemsLength * avatarGap - TOTAL_WIDTH / 2 + avatarSize / 2,
             height: avatarSize,
             width: avatarSize
           }}
@@ -144,6 +144,10 @@ const AnimatedAvatarStack = () => {
           maxItems={Avatars.length}
           borderWidth={borderWidth}
           setBorderWidth={setBorderWidth}
+          avatarGap={avatarGap}
+          setAvatarGap={setAvatarGap}
+          minAvatarGap={avatarSize / 2}
+          maxAvatarGap={avatarSize / 1.3}
         />
       </div>
     </div>

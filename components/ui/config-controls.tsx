@@ -13,10 +13,10 @@ interface ConfigSliderProps {
 
 const ConfigSlider: React.FC<ConfigSliderProps> = ({ label, min, max, value, onValueChange }) => {
   return (
-    <div className="grid grid-cols-5 gap-4 items-center justify-start w-full">
-      <p className="col-span-1">{label}:</p>
+    <div className="grid grid-cols-5 gap-4 items-center justify-start w-full max-w-[400px]">
+      <p className="col-span-1 whitespace-nowrap">{label}:</p>
       <div className="flex items-center justify-center gap-2 col-span-4">
-        {min}
+        {Math.floor(min)}
         <Slider
           value={[value]}
           min={min}
@@ -24,7 +24,7 @@ const ConfigSlider: React.FC<ConfigSliderProps> = ({ label, min, max, value, onV
           onValueChange={(sliderValue) => onValueChange(sliderValue[0])}
           className="w-[200px]"
         />
-        {max}
+        {Math.floor(max)}
       </div>
     </div>
   );
@@ -43,6 +43,10 @@ interface ConfigControlsProps {
   setBorderWidth: (value: number) => void;
   minBorderWidth?: number;
   maxBorderWidth?: number;
+  avatarGap: number;
+  setAvatarGap: (value: number) => void;
+  minAvatarGap?: number;
+  maxAvatarGap?: number;
 }
 
 const ConfigControls: React.FC<ConfigControlsProps> = ({
@@ -57,7 +61,11 @@ const ConfigControls: React.FC<ConfigControlsProps> = ({
   borderWidth,
   setBorderWidth,
   minBorderWidth = 0,
-  maxBorderWidth = 10
+  maxBorderWidth = 10,
+  avatarGap,
+  setAvatarGap,
+  minAvatarGap = 0,
+  maxAvatarGap = 100
 }) => {
   return (
     <div className="flex flex-col items-center justify-center gap-2">
@@ -75,6 +83,13 @@ const ConfigControls: React.FC<ConfigControlsProps> = ({
         max={maxBorderWidth}
         value={borderWidth}
         onValueChange={setBorderWidth}
+      />
+      <ConfigSlider
+        label="Avatar Gap"
+        min={minAvatarGap}
+        max={maxAvatarGap}
+        value={avatarGap}
+        onValueChange={setAvatarGap}
       />
     </div>
   );
