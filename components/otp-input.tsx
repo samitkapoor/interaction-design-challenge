@@ -207,7 +207,7 @@ const OTPInputBox = ({
           ? 'ring-red-400/70'
           : state === 'success'
           ? 'ring-green-500/70'
-          : 'focus-within:ring-black/15'
+          : 'focus-within:ring-blue-500/55'
       )}
       initial={{ opacity: 0, y: 10 }}
       animate={animationControls}
