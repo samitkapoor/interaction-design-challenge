@@ -219,6 +219,7 @@ const OTPInputBox = ({
         onPaste={onPaste}
         onFocus={onFocus}
         onBlur={onBlur}
+        placeholder="0"
         className="border-none outline-none w-9 h-10 text-center"
       ></motion.input>
     </motion.div>
