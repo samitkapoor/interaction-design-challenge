@@ -114,7 +114,7 @@ const OTPInputBox = ({
 
   const onFocus = () => {
     animationControls.start({
-      y: -8,
+      y: -5,
       transition: noDelaySpringTransition
     });
   };
