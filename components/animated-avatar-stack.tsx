@@ -141,7 +141,7 @@ const AnimatedAvatarStack = () => {
         </div>
       </div>
       {/* Config Controls */}
-      <div className="mt-[80px]">
+      <div className="mt-20">
         <ConfigControls
           items={itemsLength}
           setItems={setItemsLength}

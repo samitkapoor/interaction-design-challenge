@@ -1,4 +1,5 @@
 import AnimatedAvatarStack from '@/components/animated-avatar-stack';
+import OTPInput from '@/components/otp-input';
 import ComponentWrapper from '@/components/ui/component-wrapper';
 import { Lora } from 'next/font/google';
 
@@ -9,7 +10,7 @@ const lora = Lora({
 
 export default function Home() {
   return (
-    <div className="bg-background h-screen w-screen flex flex-col items-center">
+    <div className="bg-background h-screen w-screen flex flex-col items-center overflow-y-auto pb-20">
       <h1
         className={`flex items-center gap-2 text-black font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl mt-20 text-center ${lora.className}`}
       >
@@ -27,6 +28,9 @@ export default function Home() {
         </a>
       </p>
       <div className="flex flex-col items-center justify-center mt-20 gap-20">
+        <ComponentWrapper title="Day 2 - Interactive OTP Input" className="min-h-[500px]">
+          <OTPInput />
+        </ComponentWrapper>
         <ComponentWrapper title="Day 1 - Animated Avatar Stack" className="min-h-[500px]">
           <AnimatedAvatarStack />
         </ComponentWrapper>
