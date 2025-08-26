@@ -292,7 +292,14 @@ const OTPInput = () => {
           </div>
         )}
       </div>
-      {/* <div>Correct OTP: 424242</div> */}
+      <div
+        onClick={() => {
+          navigator.clipboard.writeText('424242');
+        }}
+        className="absolute flex items-center gap-1 top-4 right-4 text-sm px-2 py-1 cursor-pointer bg-black/5 hover:bg-black/10 active:bg-black/15 select-none rounded-lg"
+      >
+        Copy Password
+      </div>
     </div>
   );
 };
