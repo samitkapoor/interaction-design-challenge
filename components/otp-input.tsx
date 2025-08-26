@@ -220,7 +220,7 @@ const OTPInputBox = ({
         onFocus={onFocus}
         onBlur={onBlur}
         placeholder="0"
-        className="border-none outline-none w-9 h-10 text-center"
+        className="border-none outline-none w-9 h-10 text-center placeholder:text-black/15 caret-transparent"
       ></motion.input>
     </motion.div>
   );
