@@ -136,6 +136,22 @@ const OTPInputBox = ({
       if (prevInput) {
         prevInput.focus();
       }
+    } else if (index > 0 && e.key === 'ArrowLeft') {
+      const prevInput = document.getElementById('input-' + (index - 1));
+      if (prevInput) {
+        prevInput.focus();
+        setTimeout(() => {
+          (prevInput as HTMLInputElement).setSelectionRange(1, 1);
+        }, 0);
+      }
+    } else if (index < 5 && e.key === 'ArrowRight') {
+      const nextInput = document.getElementById('input-' + (index + 1));
+      if (nextInput) {
+        nextInput.focus();
+        setTimeout(() => {
+          (nextInput as HTMLInputElement).setSelectionRange(1, 1);
+        }, 0);
+      }
     }
   };
 
