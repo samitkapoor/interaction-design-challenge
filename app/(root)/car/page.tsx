@@ -38,7 +38,7 @@ const CarPage = () => {
         src={car.backgroundImage}
         height={1000}
         width={1000}
-        className="absolute h-full w-full object-contain z-[-1]"
+        className="absolute h-full w-full object-cover z-[-1]"
       />
       <div className="absolute inset-0 z-0 ">
         {/* <p className={car.descriptionClassName}>{car.description}</p> */}
@@ -71,7 +71,7 @@ const CarPage = () => {
         src={car.image}
         height={1000}
         width={1000}
-        className="w-full h-full object-contain z-10"
+        className="w-full h-full object-cover z-10"
       />
       <div className="absolute inset-0 z-20">
         {/* <motion.div
