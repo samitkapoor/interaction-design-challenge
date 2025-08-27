@@ -111,7 +111,7 @@ const CarPage = () => {
             }}
             transition={{
               duration: 0.3,
-              delay: 0.25
+              delay: 0.35
             }}
             key="trippy-2"
             src={car.image}
