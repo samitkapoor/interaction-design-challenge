@@ -1,5 +1,6 @@
 export const CAR_WISHLIST = [
   {
+    cardImageClassName: 'scale-125',
     name: 'Porsche 911',
     boldText: <p className="text-white blur-sm opacity-40 font-black">911</p>,
     boldTextPosition: 'top-40 w-full text-center text-white font-black leading-[230px]',
@@ -59,6 +60,7 @@ export const CAR_WISHLIST = [
       'absolute bottom-0 left-0 w-full text-center font-black text-[120px] text-white uppercase'
   },
   {
+    cardImageClassName: 'scale-90',
     name: 'Skyline GTR34',
     boldText: (
       <p
