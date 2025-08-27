@@ -60,7 +60,7 @@ export const CAR_WISHLIST = [
       'absolute bottom-0 left-0 w-full text-center font-black text-[120px] text-white uppercase'
   },
   {
-    cardImageClassName: 'scale-90',
+    cardImageClassName: 'scale-90 pb-4',
     name: 'Skyline GTR34',
     boldText: (
       <p

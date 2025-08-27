@@ -33,7 +33,7 @@ const CarPage = () => {
           type: 'spring',
           stiffness: 700,
           damping: 50,
-          delay: 0.1
+          delay: 0.3
         }}
         src={car.backgroundImage}
         height={1000}
