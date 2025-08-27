@@ -1,9 +1,16 @@
 'use client';
 
 import { CAR_WISHLIST } from '@/data/car-wishlist';
+import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { Lora } from 'next/font/google';
 import { useSearchParams } from 'next/navigation';
 import React from 'react';
+
+const lora = Lora({
+  variable: '--font-lora',
+  subsets: ['latin']
+});
 
 const CarPage = () => {
   const searchParams = useSearchParams();
@@ -29,7 +36,9 @@ const CarPage = () => {
           transition={{
             duration: 0.5
           }}
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[300px] whitespace-nowrap text-black/10 font-black"
+          className={cn(
+            'absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[300px] whitespace-nowrap text-black/10 font-black'
+          )}
         >
           {car.boldText}
         </motion.div>
@@ -44,7 +53,7 @@ const CarPage = () => {
         src={car.image}
         height={1000}
         width={1000}
-        className="h-[70vh] w-[70vw] object-cover z-10"
+        className="w-[1100px] object-contain z-10"
       />
       <div className="absolute inset-0 z-20">
         {/* <motion.div

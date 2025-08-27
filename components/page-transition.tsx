@@ -28,10 +28,10 @@ const CarCard = ({ car }: { car: (typeof CAR_WISHLIST)[number] }) => {
           stiffness: 700,
           damping: 50
         }}
-        className="w-full h-full object-cover rounded-md"
+        className="object-contain w-[300px]"
       />
 
-      <div className="absolute w-full h-full z-20 flex flex-col items-center justify-end gap-2">
+      <div className="w-full h-full z-20 flex flex-col items-center justify-end gap-2">
         <p className="text-black px-2 text-center text-xl font-semibold">{car.name}</p>
       </div>
     </div>

@@ -2,7 +2,7 @@ export const CAR_WISHLIST = [
   {
     name: 'Porsche 911 GT3 RS',
     boldText: 'GT3 RS',
-    image: '/porsche911gt3rs.png',
+    image: '/gt3rs.png',
     price: '₹3,50,00,000',
     description: "It's a little too small to get laid in, but you get laid the minute you get out.",
     descriptionClassName: ''
