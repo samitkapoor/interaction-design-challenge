@@ -1,3 +1,10 @@
+import { Lora } from 'next/font/google';
+
+const lora = Lora({
+  variable: '--font-lora',
+  subsets: ['latin']
+});
+
 export const CAR_WISHLIST = [
   {
     cardImageClassName: 'scale-125',
@@ -14,7 +21,8 @@ export const CAR_WISHLIST = [
       <p>It's a little too small to get laid in, but you get laid the minute you get out</p>
     ),
     descriptionClassName:
-      'absolute bottom-10 place-self-center text-black text-center max-w-[700px] font-black text-4xl text-black'
+      'absolute bottom-10 place-self-center text-black text-center max-w-[700px] font-black text-4xl text-black ' +
+      lora.className
   },
   {
     name: 'BMW M2',
@@ -85,12 +93,16 @@ export const CAR_WISHLIST = [
     cardImageClassName: 'scale-125',
     name: 'Mclaren P1',
     boldText: <p className="text-white font-black">P1</p>,
-    boldTextPosition: 'top-40 w-full text-center text-white font-black leading-[230px]',
+    boldTextPosition: 'top-20 w-full text-center text-white font-black leading-[230px]',
     imageTransition: {
       duration: 0.3,
       ease: 'easeInOut'
     },
     image: '/mclarenmodel.png',
-    backgroundImage: '/mclaren.jpg'
+    backgroundImage: '/mclaren.jpg',
+    description: <p>On the shoulders of giants</p>,
+    descriptionClassName:
+      'absolute bottom-10 place-self-center text-white uppercase text-center font-black text-7xl text-black ' +
+      lora.className
   }
 ];
