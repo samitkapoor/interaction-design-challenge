@@ -22,6 +22,24 @@ const CarPage = () => {
 
   return (
     <div className="h-screen w-screen flex items-center justify-center relative">
+      <motion.img
+        initial={{
+          opacity: 0
+        }}
+        animate={{
+          opacity: 1
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 700,
+          damping: 50,
+          delay: 0.2
+        }}
+        src={car.backgroundImage}
+        height={1000}
+        width={1000}
+        className="absolute h-full w-full object-contain z-[-1]"
+      />
       <div className="absolute inset-0 z-0 ">
         {/* <p className={car.descriptionClassName}>{car.description}</p> */}
         <motion.div
@@ -53,7 +71,7 @@ const CarPage = () => {
         src={car.image}
         height={1000}
         width={1000}
-        className="w-[1100px] object-contain z-10"
+        className="w-full h-full object-contain z-10"
       />
       <div className="absolute inset-0 z-20">
         {/* <motion.div

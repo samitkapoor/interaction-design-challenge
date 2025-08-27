@@ -18,7 +18,8 @@ export const CAR_WISHLIST = [
   {
     name: 'Skyline GTR34',
     boldText: 'GTR34',
-    image: '/r34.png',
+    image: '/r34model.png',
+    backgroundImage: '/r34.jpg',
     price: '$145,000',
     description: "If one day speed kills me, don't cry because I was smiling."
   }
