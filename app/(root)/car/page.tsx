@@ -80,7 +80,7 @@ const CarPage = () => {
         width={1000}
         className="w-full h-full object-cover z-10"
       />
-      {car.variant === 'trippy' && (
+      {(car.variant === 'trippy' || car.variant === 'trippy-reverse') && (
         <>
           <motion.img
             initial={{
@@ -97,7 +97,10 @@ const CarPage = () => {
             src={car.image}
             height={1000}
             width={1000}
-            className="w-full h-full object-cover z-10 -rotate-6 absolute top-0 left-0"
+            className={cn(
+              'w-full h-full object-cover z-10 absolute top-0 left-0',
+              car.variant === 'trippy' ? '-rotate-6' : 'rotate-6'
+            )}
           />
           <motion.img
             initial={{
@@ -114,30 +117,35 @@ const CarPage = () => {
             src={car.image}
             height={1000}
             width={1000}
-            className="w-full h-full object-cover z-10 -rotate-12 absolute top-0 left-0"
+            className={cn(
+              'w-full h-full object-cover z-10 absolute top-0 left-0',
+              car.variant === 'trippy' ? '-rotate-12' : 'rotate-12'
+            )}
           />
         </>
       )}
       <div className="absolute inset-0 z-20">
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 100
-          }}
-          animate={{
-            opacity: 1,
-            y: 0
-          }}
-          transition={{
-            type: 'spring',
-            stiffness: 700,
-            damping: 50,
-            delay: 1
-          }}
-          className={car.priceClassName}
-        >
-          {car.price}
-        </motion.div>
+        {car.price && (
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 100
+            }}
+            animate={{
+              opacity: 1,
+              y: 0
+            }}
+            transition={{
+              type: 'spring',
+              stiffness: 700,
+              damping: 50,
+              delay: 1
+            }}
+            className={car.priceClassName}
+          >
+            {car.price}
+          </motion.div>
+        )}
         <motion.div
           initial={{
             opacity: 0,
