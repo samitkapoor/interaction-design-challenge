@@ -2,15 +2,9 @@
 
 import { CAR_WISHLIST } from '@/data/car-wishlist';
 import { cn } from '@/lib/utils';
-import { motion, Transition } from 'framer-motion';
-import { Lora } from 'next/font/google';
+import { motion } from 'framer-motion';
 import { useSearchParams } from 'next/navigation';
-import React from 'react';
-
-const lora = Lora({
-  variable: '--font-lora',
-  subsets: ['latin']
-});
+import React, { Suspense } from 'react';
 
 const CarPage = () => {
   const searchParams = useSearchParams();
@@ -170,4 +164,12 @@ const CarPage = () => {
   );
 };
 
-export default CarPage;
+const CarPageWrapper = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <CarPage />
+    </Suspense>
+  );
+};
+
+export default CarPageWrapper;
