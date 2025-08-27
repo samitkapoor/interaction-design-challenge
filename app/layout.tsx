@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
-import Topbar from '@/components/ui/top-bar';
 
 const geist = Geist({
   variable: '--font-geist',
@@ -21,10 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geist.className} antialiased relative`}>
-        <Topbar />
-        {children}
-      </body>
+      <body className={`${geist.className} antialiased relative`}>{children}</body>
       <Analytics />
     </html>
   );
