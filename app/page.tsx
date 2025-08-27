@@ -1,5 +1,6 @@
 import AnimatedAvatarStack from '@/components/animated-avatar-stack';
 import OTPInput from '@/components/otp-input';
+import PageTransition from '@/components/page-transition';
 import ComponentWrapper from '@/components/ui/component-wrapper';
 import { Lora } from 'next/font/google';
 
@@ -28,6 +29,9 @@ export default function Home() {
         </a>
       </p>
       <div className="flex flex-col items-center justify-center mt-20 gap-20">
+        <ComponentWrapper title="Day 3 - Card To Page Transition" className="min-h-[700px]">
+          <PageTransition />
+        </ComponentWrapper>
         <ComponentWrapper title="Day 2 - Interactive OTP Input" className="min-h-[500px]">
           <OTPInput />
         </ComponentWrapper>
