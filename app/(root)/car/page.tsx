@@ -2,7 +2,7 @@
 
 import { CAR_WISHLIST } from '@/data/car-wishlist';
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
+import { motion, Transition } from 'framer-motion';
 import { Lora } from 'next/font/google';
 import { useSearchParams } from 'next/navigation';
 import React from 'react';
@@ -21,7 +21,7 @@ const CarPage = () => {
   if (!car) return null;
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center relative">
+    <div className="h-screen w-screen flex items-center justify-center relative overflow-hidden">
       <motion.img
         initial={{
           opacity: 0
@@ -33,7 +33,7 @@ const CarPage = () => {
           type: 'spring',
           stiffness: 700,
           damping: 50,
-          delay: 0.2
+          delay: 0.1
         }}
         src={car.backgroundImage}
         height={1000}
@@ -45,24 +45,31 @@ const CarPage = () => {
         <motion.div
           initial={{
             opacity: 0,
-            y: 10
+            y: 100
           }}
           animate={{
             opacity: 1,
             y: 0
           }}
           transition={{
-            duration: 0.5
+            type: 'spring',
+            stiffness: 700,
+            damping: 50,
+            delay: 0.6
           }}
           className={cn(
-            'absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[300px] whitespace-nowrap text-black/10 font-black'
+            'absolute leading-0 text-[300px]  whitespace-nowrap',
+            car.boldTextPosition || 'top-1/6 left-1/2 -translate-x-1/2'
           )}
         >
           {car.boldText}
         </motion.div>
       </div>
+
+      {/* car image */}
       <motion.img
         layoutId={car.image}
+        key={car.image}
         transition={{
           type: 'spring',
           stiffness: 700,
@@ -73,24 +80,83 @@ const CarPage = () => {
         width={1000}
         className="w-full h-full object-cover z-10"
       />
+      {car.variant === 'trippy' && (
+        <>
+          <motion.img
+            initial={{
+              opacity: 0
+            }}
+            animate={{
+              opacity: 1
+            }}
+            transition={{
+              duration: 0.3,
+              delay: 0.25
+            }}
+            key="trippy-1"
+            src={car.image}
+            height={1000}
+            width={1000}
+            className="w-full h-full object-cover z-10 -rotate-6 absolute top-0 left-0"
+          />
+          <motion.img
+            initial={{
+              opacity: 0
+            }}
+            animate={{
+              opacity: 1
+            }}
+            transition={{
+              duration: 0.3,
+              delay: 0.25
+            }}
+            key="trippy-2"
+            src={car.image}
+            height={1000}
+            width={1000}
+            className="w-full h-full object-cover z-10 -rotate-12 absolute top-0 left-0"
+          />
+        </>
+      )}
       <div className="absolute inset-0 z-20">
-        {/* <motion.div
+        <motion.div
           initial={{
             opacity: 0,
-            y: 10
+            y: 100
           }}
           animate={{
             opacity: 1,
             y: 0
           }}
           transition={{
-            duration: 0.5,
-            delay: 0.5
+            type: 'spring',
+            stiffness: 700,
+            damping: 50,
+            delay: 1
           }}
-          className="absolute bottom-10 right-10 text-4xl font-medium"
+          className={car.priceClassName}
         >
           {car.price}
-        </motion.div> */}
+        </motion.div>
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 100
+          }}
+          animate={{
+            opacity: 1,
+            y: 0
+          }}
+          transition={{
+            type: 'spring',
+            stiffness: 700,
+            damping: 50,
+            delay: 0.8
+          }}
+          className={car.descriptionClassName}
+        >
+          {car.description}
+        </motion.div>
       </div>
     </div>
   );
