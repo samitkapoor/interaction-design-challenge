@@ -10,11 +10,13 @@ const lora = Lora({
 const ComponentWrapper = ({
   children,
   className,
-  title
+  title,
+  style
 }: {
   children: React.ReactNode;
   className?: string;
   title?: string;
+  style?: React.CSSProperties;
 }) => {
   return (
     <div
@@ -23,7 +25,10 @@ const ComponentWrapper = ({
         className
       )}
     >
-      <div className="h-full w-full rounded-md bg-white flex items-center justify-center relative">
+      <div
+        style={style}
+        className="h-full w-full rounded-md bg-white flex items-center justify-center relative"
+      >
         {title && (
           <div
             className={`absolute bottom-4 text-center w-full font-bold left-0 mb-2 ${lora.className}`}
