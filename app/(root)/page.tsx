@@ -1,4 +1,5 @@
 import AnimatedAvatarStack from '@/components/animated-avatar-stack';
+import InteractiveFolder from '@/components/interactive-folder';
 import OTPInput from '@/components/otp-input';
 import PageTransition from '@/components/page-transition';
 import ComponentWrapper from '@/components/ui/component-wrapper';
@@ -31,6 +32,17 @@ export default function Home() {
         </a>
       </p>
       <div className="flex flex-col items-center justify-center mt-20 gap-20">
+        <ComponentWrapper
+          style={{
+            backgroundImage: 'url(/folder-background.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+          title=""
+          className="min-h-[450px]"
+        >
+          <InteractiveFolder />
+        </ComponentWrapper>
         <ComponentWrapper title="Day 3 - Card To Page Transition" className="min-h-[450px]">
           <PageTransition />
         </ComponentWrapper>
