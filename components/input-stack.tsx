@@ -37,14 +37,12 @@ const CompleteInput = ({
   if (type === 'text') {
     return (
       <div className="flex w-[300px] flex-col gap-1">
-        {expanded && (
-          <Label
-            htmlFor={id}
-            className={cn('text-sm font-medium', hideLabel && 'opacity-0 select-none')}
-          >
-            {label}
-          </Label>
-        )}
+        <Label
+          htmlFor={id}
+          className={cn('text-sm font-medium', (!expanded || hideLabel) && 'opacity-0 select-none')}
+        >
+          {label}
+        </Label>
 
         <div>
           <Input
@@ -60,14 +58,12 @@ const CompleteInput = ({
   } else if (type === 'select') {
     return (
       <div className="flex w-[300px] flex-col gap-1">
-        {expanded && (
-          <Label
-            htmlFor={id}
-            className={cn('text-sm font-medium', hideLabel && 'opacity-0 select-none')}
-          >
-            {label}
-          </Label>
-        )}
+        <Label
+          htmlFor={id}
+          className={cn('text-sm font-medium', (!expanded || hideLabel) && 'opacity-0 select-none')}
+        >
+          {label}
+        </Label>
 
         <div>
           <Select disabled={disabled}>
@@ -88,14 +84,12 @@ const CompleteInput = ({
   } else if (type === 'radio') {
     return (
       <div className="flex w-[300px] flex-col gap-1">
-        {expanded && (
-          <Label
-            htmlFor={id}
-            className={cn('text-sm font-medium', hideLabel && 'opacity-0 select-none')}
-          >
-            {label}
-          </Label>
-        )}
+        <Label
+          htmlFor={id}
+          className={cn('text-sm font-medium', (!expanded || hideLabel) && 'opacity-0 select-none')}
+        >
+          {label}
+        </Label>
 
         <div>
           <RadioGroup
@@ -121,14 +115,12 @@ const CompleteInput = ({
   } else if (type === 'textarea') {
     return (
       <div className="flex w-[300px] flex-col gap-1">
-        {expanded && (
-          <Label
-            htmlFor={id}
-            className={cn('text-sm font-medium', hideLabel && 'opacity-0 select-none')}
-          >
-            {label}
-          </Label>
-        )}
+        <Label
+          htmlFor={id}
+          className={cn('text-sm font-medium', (!expanded || hideLabel) && 'opacity-0 select-none')}
+        >
+          {label}
+        </Label>
 
         <div>
           <Textarea
@@ -147,14 +139,12 @@ const CompleteInput = ({
   } else if (type === 'multi-select') {
     return (
       <div className="flex w-[300px] flex-col gap-1">
-        {expanded && (
-          <Label
-            htmlFor={id}
-            className={cn('text-sm font-medium', hideLabel && 'opacity-0 select-none')}
-          >
-            {label}
-          </Label>
-        )}
+        <Label
+          htmlFor={id}
+          className={cn('text-sm font-medium', (!expanded || hideLabel) && 'opacity-0 select-none')}
+        >
+          {label}
+        </Label>
 
         <div>
           <MultiSelect options={options ?? []} placeholder={placeholder ?? 'Select…'} />
@@ -164,14 +154,12 @@ const CompleteInput = ({
   } else if (type === 'slider') {
     return (
       <div className="flex w-[300px] flex-col gap-1">
-        {expanded && (
-          <Label
-            htmlFor={id}
-            className={cn('text-sm font-medium', hideLabel && 'opacity-0 select-none')}
-          >
-            {label}
-          </Label>
-        )}
+        <Label
+          htmlFor={id}
+          className={cn('text-sm font-medium', (!expanded || hideLabel) && 'opacity-0 select-none')}
+        >
+          {label}
+        </Label>
 
         <div className="bg-white border rounded-md px-3 py-4">
           <Slider min={0} max={5} defaultValue={[2]} disabled={disabled} />
@@ -316,8 +304,8 @@ const InputStack = () => {
       };
 
   return (
-    <motion.div layout className="flex flex-col gap-2">
-      <motion.div layout="position" transition={layoutTransition}>
+    <motion.div layout className="flex flex-col">
+      <motion.div layout="position" transition={layoutTransition} className="z-10">
         <div className={cn('flex items-center justify-between w-[300px]')}>
           <Label className="text-left text-lg font-medium">Make your Pizza</Label>
           <Button
@@ -374,8 +362,8 @@ const InputStack = () => {
         layout="position"
         transition={layoutTransition}
         className={cn(
-          'relative w-[300px] flex flex-col flex-nowrap items-start justify-start gap-2 mt-4 mb-1',
-          !showAll && 'min-h-[40px]'
+          'relative w-[300px] flex flex-col flex-nowrap items-start justify-start gap-2 mt-0 mb-2',
+          !showAll && 'min-h-[60.5px]'
         )}
       >
         <AnimatePresence mode="popLayout">
