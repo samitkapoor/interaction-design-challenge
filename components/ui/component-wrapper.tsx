@@ -1,6 +1,9 @@
+'use client';
+
 import { cn } from '@/lib/utils';
 import React from 'react';
 import { Lora } from 'next/font/google';
+import { motion } from 'framer-motion';
 
 const lora = Lora({
   variable: '--font-lora',
@@ -19,26 +22,23 @@ const ComponentWrapper = ({
   style?: React.CSSProperties;
 }) => {
   return (
-    <div
+    <motion.div
+      layout
       className={cn(
-        'p-3 w-[300px] sm:w-[500px] md:w-[600px] bg-black/5 min-h-[300px] flex items-center justify-center rounded-xl',
+        'p-3 w-[300px] sm:w-[500px] md:w-[600px] border-[12px] border-black/5 bg-white min-h-[300px] flex items-center justify-center rounded-xl relative py-20',
         className
       )}
+      style={style}
     >
-      <div
-        style={style}
-        className="h-full w-full rounded-md bg-white flex items-center justify-center relative"
-      >
-        {title && (
-          <div
-            className={`absolute bottom-4 text-center w-full font-bold left-0 mb-2 ${lora.className}`}
-          >
-            {title}
-          </div>
-        )}
-        {children}
-      </div>
-    </div>
+      {title && (
+        <div
+          className={`absolute bottom-4 text-center w-full font-bold left-0 mb-2 ${lora.className}`}
+        >
+          {title}
+        </div>
+      )}
+      {children}
+    </motion.div>
   );
 };
 

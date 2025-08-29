@@ -51,7 +51,7 @@ const CarCard = ({ car }: { car: (typeof CAR_WISHLIST)[number] }) => {
 
 const PageTransition = () => {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-start pt-10">
+    <div className="w-full h-full flex flex-col items-center justify-start pt-10 bg-white">
       <div className="grid grid-cols-1 sm:grid-cols-2 items-center justify-center gap-2">
         {CAR_WISHLIST.map((car, index) => {
           return (

@@ -1,4 +1,5 @@
 import AnimatedAvatarStack from '@/components/animated-avatar-stack';
+import InputStack from '@/components/input-stack';
 import InteractiveFolder from '@/components/interactive-folder';
 import OTPInput from '@/components/otp-input';
 import PageTransition from '@/components/page-transition';
@@ -32,14 +33,18 @@ export default function Home() {
         </a>
       </p>
       <div className="flex flex-col items-center justify-center mt-20 gap-20">
+        <ComponentWrapper title="Day 5 - Progressive Input Stack" className="min-h-[450px]">
+          <InputStack />
+        </ComponentWrapper>
         <ComponentWrapper
           style={{
             backgroundImage: 'url(/folder-background.jpg)',
             backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
           }}
-          title=""
-          className="min-h-[450px]"
+          title="Day 4 - Interactive Folder"
+          className="min-h-[450px] text-white"
         >
           <InteractiveFolder />
         </ComponentWrapper>
