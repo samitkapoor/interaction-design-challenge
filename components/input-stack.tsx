@@ -277,11 +277,6 @@ const InputStack = () => {
       ]
     },
     {
-      label: 'Spice Level',
-      type: 'slider',
-      placeholder: 'Select a spice level'
-    },
-    {
       label: 'Special Instructions',
       type: 'textarea',
       placeholder: 'Allergies, preferences, or delivery notes.'
@@ -321,7 +316,7 @@ const InputStack = () => {
       };
 
   return (
-    <motion.div layout className="flex flex-col items-center justify-center gap-2">
+    <motion.div layout className="flex flex-col gap-2">
       <motion.div layout="position" transition={layoutTransition}>
         <div className={cn('flex items-center justify-between w-[300px]')}>
           <Label className="text-left text-lg font-medium">Make your Pizza</Label>
