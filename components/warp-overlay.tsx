@@ -119,7 +119,7 @@ const Overlay = ({
         <p className="text-base text-center">
           Are you sure you want to delete these
           <br />
-          entries? You can't undo this action.
+          entries? You can&apos;t undo this action.
         </p>
         <Button variant="outline" className="rounded-full mt-8" onClick={() => setOverlay(false)}>
           Delete
