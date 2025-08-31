@@ -6,6 +6,7 @@ import PageTransition from '@/components/page-transition';
 import ComponentWrapper from '@/components/ui/component-wrapper';
 import Topbar from '@/components/ui/top-bar';
 import WarpOverlay from '@/components/warp-overlay';
+import PeerlistAutofill from '@/components/peerlist-autofill';
 import { Lora } from 'next/font/google';
 
 const lora = Lora({
@@ -34,6 +35,9 @@ export default function Home() {
         </a>
       </p>
       <div className="flex flex-col items-center justify-center mt-20 gap-20">
+        <ComponentWrapper title="Day 7 - Peerlist Autofill w/AI" className="min-h-[450px]">
+          <PeerlistAutofill />
+        </ComponentWrapper>
         <ComponentWrapper
           title="Day 6 - Warp Overlay"
           className="min-h-[450px] items-start justify-center pt-3"
