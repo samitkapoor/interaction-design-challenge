@@ -69,13 +69,7 @@ const Topbar = () => {
         }}
         className="w-full h-full absolute bottom-8 pointer-events-none left-0 z-0 blur-3xl"
       />
-      <div className="z-10 w-full flex gap-2 items-center justify-center h-[30px]">
-        <div className={`text-sm font-bold text-gray-800 ${geist.className}`}>
-          {isPastDate
-            ? 'Solutions unlock soon'
-            : `Solutions unlock in ${timeLeft.days}d ${timeLeft.hours}h ${timeLeft.minutes}m ${timeLeft.seconds}s`}
-        </div>
-      </div>
+      <div className="z-10 w-full flex gap-2 items-center justify-center h-[30px]"></div>
     </div>
   );
 };
